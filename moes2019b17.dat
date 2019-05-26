@@ -1,0 +1,12 @@
+let Buildings:= Buildings union {'Building17'};
+let LowTempBuildings:=LowTempBuildings union {'Building17'};
+let specElec['Building17',1]:=0.018334142787761;
+let specElec['Building17',2]:=0.018334142787761;
+let specElec['Building17',3]:=0.018334142787761;
+let specElec['Building17',4]:=0.018334142787761;
+let specElec['Building17',5]:=0.00396432649953777;
+let specElec['Building17',6]:=0;
+let FloorArea['Building17']:=18389;
+let k_th['Building17']:=0.008246858;
+let k_sun['Building17']:=0.001653;
+let specQ_people['Building17']:=0.00692981818181818;

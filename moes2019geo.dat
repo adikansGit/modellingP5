@@ -1,0 +1,16 @@
+# Data source: Swiss Energyscope
+# Data source: R. Suciu, L. Girardin and F. Maréchal, Energy integration of CO2 networks and power to gas for emerging energy autonomous cities in Europe, Supplementary material, Energy, 2018
+# Assumption: interest rate 3%
+ 
+/*---------------------------------------------------------------------------------------------------------------------------------------
+Set the efficiency of Geothermal
+---------------------------------------------------------------------------------------------------------------------------------------*/
+let eff['Geothermal'] := 1;
+
+/*---------------------------------------------------------------------------------------------------------------------------------------
+Parameters
+---------------------------------------------------------------------------------------------------------------------------------------*/
+let Qheatingsupply['Geothermal'] := 186.4; 
+let Fmax['Geothermal']:=100;
+let cinv1['Geothermal']:= 4870.71;
+let cinv2['Geothermal']:=0;

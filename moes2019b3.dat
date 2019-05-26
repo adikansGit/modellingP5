@@ -1,0 +1,12 @@
+let Buildings:= Buildings union {'Building3'};
+let MediumTempBuildings:=MediumTempBuildings union {'Building3'};
+let specElec['Building3',1]:=0.0197280460854618;
+let specElec['Building3',2]:=0.0197280460854618;
+let specElec['Building3',3]:=0.0197280460854618;
+let specElec['Building3',4]:=0.0197280460854618;
+let specElec['Building3',5]:=0.00426659095731564;
+let specElec['Building3',6]:=0;
+let FloorArea['Building3']:=16655;
+let k_th['Building3']:=0.009708987;
+let k_sun['Building3']:=0.008576;
+let specQ_people['Building3']:=0.00692981818181818;

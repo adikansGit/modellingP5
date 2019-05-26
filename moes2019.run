@@ -1,0 +1,107 @@
+/*---------------------------------------------------------------------------------------------------------------------------------------
+Load the main model and its data
+---------------------------------------------------------------------------------------------------------------------------------------*/
+reset;
+model moes2019.mod;
+data moes2019.dat;
+
+/*---------------------------------------------------------------------------------------------------------------------------------------
+Including all building parameters
+---------------------------------------------------------------------------------------------------------------------------------------*/
+include moes2019b1.dat;
+include moes2019b2.dat;
+include moes2019b3.dat;
+include moes2019b4.dat;
+include moes2019b5.dat;
+include moes2019b6.dat;
+include moes2019b7.dat;
+include moes2019b8.dat;
+include moes2019b9.dat;
+include moes2019b10.dat;
+include moes2019b11.dat;
+include moes2019b12.dat;
+include moes2019b13.dat;
+include moes2019b14.dat;
+include moes2019b15.dat;
+include moes2019b16.dat;
+include moes2019b17.dat;
+include moes2019b18.dat;
+include moes2019b19.dat;
+include moes2019b20.dat;
+include moes2019b21.dat;
+include moes2019b22.dat;
+include moes2019b23.dat;
+include moes2019b24.dat;
+
+/*---------------------------------------------------------------------------------------------------------------------------------------
+Including all technologies files 
+---------------------------------------------------------------------------------------------------------------------------------------*/ 
+include moes2019PV.mod;
+
+include moes2019boiler.dat;
+include moes2019cogen.dat;
+#include moes2019geo.dat;
+include moes2019HE_DC.dat;
+include moes2019HP1LT.dat;
+include moes2019HP1MT.dat;
+#include moes2019HP2.dat;
+include moes2019PV.dat;
+include moes2019SOFC.dat;
+
+/*---------------------------------------------------------------------------------------------------------------------------------------
+AMPL options
+---------------------------------------------------------------------------------------------------------------------------------------*/
+option solver 'gurobi';                                         # choose the solver
+option omit_zero_rows 0;										# to not display 0 in rows
+option omit_zero_cols 0;										# to not display 0 in columns
+option presolve 5e-05;
+/*---------------------------------------------------------------------------------------------------------------------------------------
+Solve the problem
+---------------------------------------------------------------------------------------------------------------------------------------*/
+solve;
+
+print {u in Utilities} :
+															u,
+															mult_t[u,1],
+															mult_t[u,2],
+															mult_t[u,3],
+															mult_t[u,4],
+															mult_t[u,5],
+															mult_t[u,6]			> results/mult.dat;
+
+/*---------------------------------------------------------------------------------------------------------------------------------------
+Display commands
+---------------------------------------------------------------------------------------------------------------------------------------*/
+display Edemand;
+display Qheating;
+display Qheatingdemand;
+
+display mult;
+display mult_t;
+
+display use;
+display use_t;
+
+display Flowin;
+display Flowout;
+display Qheatingsupply;
+display mult_heating_t;
+
+display FlowInUnit;
+display FlowOutUnit;
+
+display InvCost;
+display OpCost;
+display InvCost+OpCost+emission_cost;
+
+display emission_cost;
+display emission_cost/(1000*co2_spec);
+
+#printf "CAPEX(CHF),CO2 Emissions(tons)\n" > results/Pareto_CAPEX_CO2.csv;
+#printf "%10.2f,%6.2f\n",InvCost,emission_cost/(1000*co2_spec) >> results/Pareto_CAPEX_CO2.csv;
+
+#printf "CAPEX(CHF),OPEX(CHF)\n" > results/Pareto_CAPEX_OPEX.csv;
+#printf "%10.2f,%10.2f\n",InvCost,OpCost >> results/Pareto_CAPEX_OPEX.csv;
+
+
+#display Buildings;

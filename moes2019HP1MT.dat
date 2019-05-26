@@ -1,0 +1,25 @@
+# Data source: Swiss Energyscope
+# Data source: P.Stadler et al, Contribution of Model Predictive Control in the Integration of Renewable Energy Sources within the Built Environment,2018
+# Assumption: interest rate 3%
+ 
+/*---------------------------------------------------------------------------------------------------------------------------------------
+Set the maximum scaling factor of HP1stageMT
+---------------------------------------------------------------------------------------------------------------------------------------*/
+let eff['HP1stageMT']:=(Theating["MediumT"]+273)/(Theating["MediumT"]-T_lake)*exergy_eff;
+let Fmax['HP1stageMT'] := 50;
+
+/*---------------------------------------------------------------------------------------------------------------------------------------
+Set the reference size of electricity flow 
+---------------------------------------------------------------------------------------------------------------------------------------*/
+let Qheatingsupply['HP1stageMT']:=1000;
+let Flowin['Electricity','HP1stageMT'] := Qheatingsupply['HP1stageMT']/eff['HP1stageMT'];
+#let Flowin['Electricity','HP1stageMT'] := 1000;
+#let Qheatingsupply['HP1stageMT'] := Flowin['Electricity','HP1stageMT']*eff['HP1stageMT'];
+
+#let cinv2['HP1stageMT'] := 1193225;
+#let cinv2['HP1stageMT'] := 423265.1;
+
+let cinv1['HP1stageMT']:= 500000;
+let cinv2['HP1stageMT']:= 200000;
+
+let Tminheating['HP1stageMT'] := 70.001;
