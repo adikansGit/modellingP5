@@ -6,7 +6,8 @@
 Set the maximum scaling factor of HP1stageMT
 ---------------------------------------------------------------------------------------------------------------------------------------*/
 let eff['HP1stageMT']:=(Theating["MediumT"]+273)/(Theating["MediumT"]-T_lake)*exergy_eff;
-let Fmax['HP1stageMT'] := 50;
+let Fmax['HP1stageMT'] := 25;
+let Fmin['HP1stageMT'] := 5;
 
 /*---------------------------------------------------------------------------------------------------------------------------------------
 Set the reference size of electricity flow 
@@ -19,7 +20,7 @@ let Flowin['Electricity','HP1stageMT'] := Qheatingsupply['HP1stageMT']/eff['HP1s
 #let cinv2['HP1stageMT'] := 1193225;
 #let cinv2['HP1stageMT'] := 423265.1;
 
-let cinv1['HP1stageMT']:= 500000;
-let cinv2['HP1stageMT']:= 200000;
+let cinv1['HP1stageMT']:= 0;
+let cinv2['HP1stageMT']:= 350000;
 
 let Tminheating['HP1stageMT'] := 70.001;

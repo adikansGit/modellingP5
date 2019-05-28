@@ -143,14 +143,14 @@ param Text := 															# external temperature [C] at each typical period
 Utility parameters
 ---------------------------------------------------------------------------------------------------------------------------------------*/
 param c_spec :=															# specific cost of resources[CHF/kWh)]
-NatGasGrid 0.15
-ElecGridBuy 0.24
-ElecGridSell -0.12
+NatGasGrid 0.08
+ElecGridBuy 0.27
+ElecGridSell -0.05
 ;
 
-let c_co2_natgas := 0.2;												#equivalent kg/kWh of CO2
-let c_co2_elec := 0.03;
-let co2_spec := 0.01;														#CHF/kg CO_2
+let c_co2_natgas := 0.2;												# equivalent kg/kWh of CO2
+let c_co2_elec := 0.14;
+let co2_spec := 0.01;													# CHF/kg CO_2
 
 /*---------------------------------------------------------------------------------------------------------------------------------------
 Set the grid parameters: resource flow and fmax

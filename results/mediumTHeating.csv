@@ -1,0 +1,7 @@
+Unit,Annual_Heating_Load,Installed_Heating_Capacity
+Boiler,     23.31, 23.31
+SOFC,      0.00,  0.00
+HP1stageLT,      0.00,  0.00
+HP1stageMT,  12858.03, 13.83
+Cogen,      0.00,  0.00
+HEDatacenter,    898.00,  0.40

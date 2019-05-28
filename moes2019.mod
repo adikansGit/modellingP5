@@ -43,7 +43,7 @@ param specElec{Buildings,Time} default 0;
 # param eps_cap default 1;
 # param eps_op default 0;
 # param eps_co2 default 0;
-param pareto_limit := 15000;									# For obtaining points on the pareto curve
+param pareto_limit := 129500;									# For obtaining points on the pareto curve
 param n_years default 20;											# yrs to pay the full price
 param i_rate default 0.06;											# interest rate
 param tau := i_rate*(1+i_rate)^n_years/(((1+i_rate)^n_years)-1);	# factor to multiply with the total investment cost to obtain annual cost
@@ -208,13 +208,15 @@ subject to co2_cstr:
 	emission_cost = sum{t in Time} ((FlowOutUnit['Natgas','NatGasGrid',t]*c_co2_natgas + FlowOutUnit['Electricity','ElecGridBuy',t]*c_co2_elec)*co2_spec*top[t]);
 
 #Constraint on one variable to form a Pareto curve
-subject to pareto:
-	emission_cost <= pareto_limit;
+#subject to pareto:
+#	emission_cost <= pareto_limit;
 
 
 
 /*---------------------------------------------------------------------------------------------------------------------------------------
 Objective function
 ---------------------------------------------------------------------------------------------------------------------------------------*/
+
 #minimize ObjectiveFunction: InvCost;
-minimize ObjectiveFunction: InvCost;
+minimize ObjectiveFunction: emission_cost + 0.000000001*InvCost;
+#minimize ObjectiveFunction: OpCost + 0.000000001*InvCost;

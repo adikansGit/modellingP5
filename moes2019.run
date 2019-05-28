@@ -104,4 +104,11 @@ display emission_cost/(1000*co2_spec);
 #printf "%10.2f,%10.2f\n",InvCost,OpCost >> results/Pareto_CAPEX_OPEX.csv;
 
 
-#display Buildings;
+printf "Unit,Installed Capacity\n"												>results/unitSizing.csv;
+printf {u in UtilitiesOfType['Heating']} "%s,%8.2f\n",
+u,
+Qheatingsupply[u]*mult[u]/1000													>>results/unitSizing.csv;
+
+printf "%s,%8.2f\n",
+'PV',
+mult['PV']*Flowout['Electricity','PV']/1000										>>results/unitSizing.csv;
